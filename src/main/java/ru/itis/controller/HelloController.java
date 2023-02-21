@@ -18,15 +18,15 @@ import java.util.Optional;
 public class HelloController {
 
     private final UserRepository userRepository;
-
-    @GetMapping(value = {"/users/{id}", "users"})
-    public Iterable<User> user(@PathVariable(required = false) Optional<Integer> id) {
-        if (id.isPresent()) {
-            return userRepository.findAllById(List.of(id.get()));
-        } else {
-            return userRepository.findAll();
-        }
-    }
+//
+//    @GetMapping(value = {"/users/{id}", "users"})
+//    public Iterable<User> user(@PathVariable(required = false) Optional<Integer> id) {
+//        if (id.isPresent()) {
+//            return userRepository.findAllById(List.of(id.get()));
+//        } else {
+//            return userRepository.findAll();
+//        }
+//    }
 
     @GetMapping("/users/create")
     public void create(@RequestParam Optional<String> name, @RequestParam Optional<String> email) {
