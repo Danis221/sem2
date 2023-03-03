@@ -20,7 +20,7 @@ dependencies {
     implementation("org.postgresql:postgresql:42.5.3")
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
     implementation("org.springframework.boot:spring-boot-starter-validation:3.0.2")
-
+ 
     compileOnly ("org.projectlombok:lombok:1.18.26")
     annotationProcessor ("org.projectlombok:lombok:1.18.26")
 
