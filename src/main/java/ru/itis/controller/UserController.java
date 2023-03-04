@@ -1,6 +1,7 @@
 package ru.itis.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.dto.CreateUserRequestDto;
 import ru.itis.dto.UserResponseDto;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserRepository userRepository;
@@ -36,7 +37,7 @@ public class UserController {
 
 
     @PostMapping("/user/create")
-    public void createUser(@Valid @ModelAttribute("user") CreateUserRequestDto user){
+    public void createUser(@Valid @RequestBody CreateUserRequestDto user){
         userRepository.save(
                 User.builder()
                         .name(user.getName().trim())
