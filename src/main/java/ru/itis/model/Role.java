@@ -1,20 +1,18 @@
 package ru.itis.model;
 
 import lombok.Getter;
-import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-
-@Entity(name = "roles")
+@Entity(name = "role")
 @Getter
-@Setter
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
-    @OneToOne
-    @JoinColumn(name = "actor_id")
-    private Actor actor;
+    private String name;
 }

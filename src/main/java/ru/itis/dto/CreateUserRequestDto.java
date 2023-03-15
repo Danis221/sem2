@@ -1,17 +1,18 @@
 package ru.itis.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateUserRequestDto {
 
     @NotBlank(message = "Name shouldn't be blank")
@@ -28,4 +29,7 @@ public class CreateUserRequestDto {
     @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birth;
+
+    @Size(min = 8, max = 63, message = "Password should contains from 8 to 63 symbols")
+    private String password;
 }

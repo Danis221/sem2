@@ -2,51 +2,37 @@ package ru.itis.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.dto.CreateUserRequestDto;
 import ru.itis.dto.UserResponseDto;
-import ru.itis.model.User;
-import ru.itis.repository.UserRepository;
+import ru.itis.service.impl.UserServiceImpl;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+import static ru.itis.dto.UserResponseDto.fromEntity;
+
+@Controller
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserServiceImpl userService;
 
-
-
-    @GetMapping("/users/{id}")
-    public List<UserResponseDto> user(@PathVariable(required = false) Optional<Integer> id){
+    @ResponseBody
+    @GetMapping(value = {"/users/{id}", "users"})
+    public List<UserResponseDto> user(@PathVariable(required = false) Optional<Integer> id) {
         if (id.isPresent()) {
-            return userRepository.findAllById(List.of(id.get()))
-                    .stream()
-                    .map(UserResponseDto::fromEntity)
-                    .toList();
+            return List.of(userService.findById(id.get()).get());
         } else {
-            return userRepository.findAll()
-                    .stream()
-                    .map(UserResponseDto::fromEntity)
-                    .toList();
+            return userService.findAll();
         }
     }
 
 
-    @PostMapping("/user/create")
-    public void createUser(@Valid @RequestBody CreateUserRequestDto user){
-        userRepository.save(
-                User.builder()
-                        .name(user.getName().trim())
-                        .secondName(user.getSecondname().trim())
-                        .email(user.getEmail().trim())
-                        .birth(user.getBirth())
-                        .build()
-        );
+    @PostMapping("/user")
+    public String createUser(@ModelAttribute CreateUserRequestDto user) {
+        userService.create(user);
+        return "sign_up_success";
     }
-
-
 }

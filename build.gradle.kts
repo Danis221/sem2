@@ -13,13 +13,13 @@ repositories {
 }
 
 dependencies {
-
-
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+
     implementation("org.postgresql:postgresql:42.5.3")
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
-    implementation("org.springframework.boot:spring-boot-starter-validation:3.0.2")
  
     compileOnly ("org.projectlombok:lombok:1.18.26")
     annotationProcessor ("org.projectlombok:lombok:1.18.26")
@@ -29,6 +29,12 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+
+    //webjars
+    implementation ("org.webjars:jquery:3.6.0")
+    implementation ("org.webjars:bootstrap:4.6.0")
+    implementation ("org.webjars:webjars-locator-core:0.46")
+
 }
 
 tasks.getByName<Test>("test") {
