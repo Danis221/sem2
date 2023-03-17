@@ -1,9 +1,7 @@
 package ru.itis.service.impl;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.dto.CreateUserRequestDto;
@@ -54,5 +52,10 @@ public class UserServiceImpl implements UserService {
                 .password(encoder.encode(userDto.getPassword()))
                 .build();
         return UserResponseDto.fromEntity(userRepository.save(user));
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+      return userRepository.getUserByEmail(email);
     }
 }

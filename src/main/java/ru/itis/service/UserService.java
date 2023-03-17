@@ -1,9 +1,8 @@
 package ru.itis.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import ru.itis.dto.CreateUserRequestDto;
 import ru.itis.dto.UserResponseDto;
+import ru.itis.model.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,4 +14,6 @@ public interface UserService {
     Optional<UserResponseDto> findById(Integer id);
 
     UserResponseDto create(CreateUserRequestDto userDto);
+
+    Optional<User> findByEmail(String email);
 }

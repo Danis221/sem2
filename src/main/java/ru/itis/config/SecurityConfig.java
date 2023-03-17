@@ -19,13 +19,14 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/home")
-                .authenticated()
+                .antMatchers("/home").authenticated()
+                .antMatchers("/profile").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .usernameParameter("email")
                 .defaultSuccessUrl("/home")
+                .failureUrl("/login.html?error=true")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
