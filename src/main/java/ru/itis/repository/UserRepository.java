@@ -27,6 +27,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findByEmail(String  email);
 
+    User findByVerificationCode(String code);
+
 //    @Query(value = "select u from User u where u.name=:name and u.id = :id")
 //    User findUserByNameAndId(@Pa)
 }

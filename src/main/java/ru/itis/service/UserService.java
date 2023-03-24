@@ -13,7 +13,13 @@ public interface UserService {
 
     Optional<UserResponseDto> findById(Integer id);
 
-    UserResponseDto create(CreateUserRequestDto userDto);
+    UserResponseDto create(CreateUserRequestDto userDto, String url);
+
+    boolean verify(String verificationCode);
+
+    void sendVerificationMail(String mail, String name, String code, String url);
 
     Optional<User> findByEmail(String email);
+
+    UserResponseDto getByEmail(String email);
 }

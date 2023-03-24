@@ -42,6 +42,8 @@ dependencies {
     implementation ("org.webjars:bootstrap:4.6.0")
     implementation ("org.webjars:webjars-locator-core:0.46")
 
+    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
+
 }
 
 tasks.getByName<Test>("test") {
