@@ -1,6 +1,5 @@
 package ru.itis.controller;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -8,13 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.itis.dto.CreateUserRequestDto;
 import ru.itis.dto.UserResponseDto;
 import ru.itis.service.UserService;
-import ru.itis.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
-
-import static ru.itis.dto.UserResponseDto.fromEntity;
 
 @Controller
 @RequiredArgsConstructor

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "actors")
 @Getter
@@ -16,14 +17,14 @@ public class Actor {
     @Column(nullable = false)
     private String name;
 
-
     @Column(nullable = false)
     private Integer old;
 
     @OneToOne(mappedBy = "actor")
-    private Role role;
+    private RoleActor roleActor;
 
     @ManyToOne()
     @JoinColumn(name = "director_id")
     private Director director;
+
 }
